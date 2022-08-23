@@ -15,7 +15,16 @@ fi
 # will be used as a backup.
 echo $(date +"%Y-%m-%d-%H:%M:%S") "Loading configuration file."
 label=$(cat ~/.bk/configs.json | jq -r ."device")
+if [ !label ]; then
+    echo $(date +"%Y-%m-%d-%H:%M:%S")  "You need to configure the configuration file in: ~/.bk/configs.json."
+    exit
+fi
+
 wallet=$(cat ~/.bk/configs.json | jq -r ."wallet")
+if [ !label ]; then
+    echo $(date +"%Y-%m-%d-%H:%M:%S")  "You need to configure the configuration file in: ~/.bk/configs.json."
+    exit
+fi
 
 # Search for the device with the 
 # configuration file label.
